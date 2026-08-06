@@ -1,71 +1,69 @@
-# 🍹 Proyecto Bebidas React
+# Mixólogo IA · Buscador de Bebidas
 
-Aplicación web de recetas de bebidas desarrollada con React, TypeScript y TailwindCSS.
+Aplicación web desarrollada con React y TypeScript para buscar recetas, guardar bebidas favoritas y crear recetas personalizadas con inteligencia artificial.
 
-## 🚀 Demo
+## Demo
 
 https://proyecto-bebidas-react.netlify.app
 
----
+## Características
 
-## ✨ Características
+- Búsqueda por ingrediente y categoría mediante TheCocktailDB.
+- Ficha completa de cada bebida.
+- Favoritos persistentes en el navegador.
+- Generador de recetas con IA y formato profesional.
+- Ejemplos rápidos, estados de carga y manejo de errores.
+- Integración segura con OpenRouter mediante una función de Netlify.
+- Diseño responsive.
 
-- 🔍 Búsqueda de bebidas por nombre o ingrediente
-- 📂 Filtro por categorías
-- ❤️ Sistema de favoritos
-- 🤖 Integración con IA para generar recetas
-- 📱 Diseño responsive
-- ⚡ Aplicación rápida con Vite
+## Tecnologías
 
----
-
-## 🛠️ Tecnologías utilizadas
-
-- React
+- React 19
 - TypeScript
 - Vite
-- TailwindCSS
-- Redux Toolkit
-- React Router DOM
+- Tailwind CSS
+- React Router
+- Zustand
+- Zod
 - Axios
-- OpenRouter AI
+- Netlify Functions
+- OpenRouter
 
----
-
-## 📦 Instalación
-
-Clona el repositorio:
+## Instalación
 
 ```bash
 git clone https://github.com/Crowlley2001/proyecto-bebidas-react.git
-```
-
-Instala dependencias:
-
-```bash
+cd proyecto-bebidas-react
 npm install
 ```
 
-Ejecuta el proyecto:
+Para trabajar únicamente con la búsqueda tradicional:
 
 ```bash
 npm run dev
 ```
 
----
+Para probar también la función de IA localmente:
 
-## 🔑 Variables de entorno
-
-Crea un archivo `.env`:
-
-```env
-VITE_OPENROUTER_KEY=tu_api_key
+```bash
+npx netlify dev
 ```
 
----
+## Variable privada
 
-## 👨‍💻 Autor
+La clave de OpenRouter se configura en **Netlify → Project configuration → Environment variables**:
 
-Daniel Estrada
+```env
+OPENROUTER_API_KEY="tu_clave_privada"
+OPENROUTER_MODEL="openrouter/free"
+```
 
-- GitHub: https://github.com/Crowlley2001
+La clave no debe comenzar con `VITE_`, porque las variables con ese prefijo se incluyen en el frontend y pueden quedar expuestas.
+
+## Seguridad
+
+El navegador llama a `/.netlify/functions/generate-recipe`. La función valida la solicitud, utiliza la clave privada del servidor y devuelve únicamente la receta generada.
+
+## Autor
+
+Daniel Estrada · https://github.com/Crowlley2001
